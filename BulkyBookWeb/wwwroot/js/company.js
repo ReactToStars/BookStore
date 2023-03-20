@@ -14,7 +14,7 @@ function loadDataTable() {
             { "data": "streetAddress", "width": "15%" },
             { "data": "city", "width": "15%" },
             { "data": "state", "width": "15%" },
-            { "data": "phone", "width": "15%" },
+            { "data": "phoneNumber", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {

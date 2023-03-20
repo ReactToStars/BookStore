@@ -41,7 +41,7 @@ namespace BulkyBook.Utility
             //return Task.CompletedTask;
 
             var client = new SendGridClient(SendGridSecret);
-            var from = new EmailAddress("hello@dotnetmastery.com", "Bulky Book");
+            var from = new EmailAddress("hello@dotnetmastery.com", "Book Store");
             var to = new EmailAddress(email);
             var msg = MailHelper.CreateSingleEmail(from, to, subject, "", htmlMessage);
             return client.SendEmailAsync(msg);

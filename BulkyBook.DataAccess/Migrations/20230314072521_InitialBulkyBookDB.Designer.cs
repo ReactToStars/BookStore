@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulkyBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220408141851_fixOrderHeader")]
-    partial class fixOrderHeader
+    [Migration("20230314072521_InitialBulkyBookDB")]
+    partial class InitialBulkyBookDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

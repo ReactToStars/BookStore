@@ -8,12 +8,12 @@
 		<div class="card">
 			<div class="card-header bg-dark text-light ml-0">
 				<div class="container row">
-				<div class="col-12 d-none d-md-block col-md-6 pb-1">
-					<i class="fas fa-shopping-cart"></i> &nbsp; Order Summary
-				</div>
-				<div class="col-12 col-md-4 offset-md-2 text-right">
-					<a asp-action="Index" class="btn btn-outline-info form-control btn-sm">Back to Orders</a>
-				</div>
+					<div class="col-12 d-none d-md-block col-md-6 pb-1">
+						<i class="fas fa-shopping-cart"></i> &nbsp; Order Summary
+					</div>
+					<div class="col-12 col-md-4 offset-md-2 text-right">
+						<a asp-action="Index" class="btn btn-outline-info form-control btn-sm">Back to Orders</a>
+					</div>
 				</div>
 			</div>
 			<div class="card-body">
@@ -176,7 +176,7 @@
 									<div class="col-3">Payment Due Date</div>
 									<div class="col-9">
 										<input value="@Model.OrderHeader.PaymentDueDate.ToShortDateString()"
-										   readonly type="text" class="form-control" />
+											   readonly type="text" class="form-control" />
 									</div>
 								}
 								else
@@ -184,7 +184,7 @@
 									<div class="col-3">Payment Date</div>
 									<div class="col-9">
 										<input value="@Model.OrderHeader.PaymentDate.ToShortDateString()"
-										   readonly id="paymentDate" type="text" class="form-control" />
+											   readonly id="paymentDate" type="text" class="form-control" />
 									</div>
 								}
 							</div>
@@ -195,7 +195,7 @@
 								</div>
 							</div>
 							<input type="submit" asp-action="UpdateOrderDetail" class="btn btn-warning form-control my-1" value="Update Order Details" />
-							
+
 
 
 						</div>
@@ -234,10 +234,10 @@
 								</li>
 							</ul>
 							@if (Model.OrderHeader.PaymentStatus == SD.PaymentStatusDelayedPayment &&
-										Model.OrderHeader.OrderStatus == SD.StatusShipped)
-								{
-									<input type="submit" class="btn btn-success form-control my-1" value="Pay Now" />
-								}
+									Model.OrderHeader.OrderStatus == SD.StatusShipped)
+							{
+								<input type="submit" class="btn btn-success form-control my-1" value="Pay Now" />
+							}
 							@if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
 							{
 								if (Model.OrderHeader.OrderStatus == SD.StatusApproved)
@@ -247,12 +247,12 @@
 								if (Model.OrderHeader.OrderStatus == SD.StatusInProcess)
 								{
 									<input type="submit" onclick="return validateInput()"
-									asp-action="ShipOrder" class="btn btn-primary form-control my-1" value="Ship Order" />
+								   asp-action="ShipOrder" class="btn btn-primary form-control my-1" value="Ship Order" />
 								}
-								
+
 								@if (Model.OrderHeader.OrderStatus != SD.StatusRefunded &&
 										Model.OrderHeader.OrderStatus != SD.StatusCancelled &&
-								Model.OrderHeader.OrderStatus!=SD.StatusShipped)
+										Model.OrderHeader.OrderStatus != SD.StatusShipped)
 								{
 									<input type="submit" asp-action="CancelOrder" class="btn btn-danger form-control my-1" value="Cancel Order" />
 								}
@@ -267,27 +267,27 @@
 
 
 @section Scripts{
-    <partial name="_ValidationScriptsPartial" />
-<script>
-	function validateInput(){
-		if(document.getElementById("trackingNumber").value==""){
-			Swal.fire({
-			  icon: 'error',
-			  title: 'Oops...',
-			  text: 'Please enter tracking number!',
-			});
-			return false;
+	<partial name="_ValidationScriptsPartial" />
+	<script>
+		function validateInput() {
+			if (document.getElementById("trackingNumber").value == "") {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Please enter tracking number!',
+				});
+				return false;
+			}
+			if (document.getElementById("carrier").value == "") {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Please enter carrier!',
+				});
+				return false;
+			}
+			return true;
 		}
-		if(document.getElementById("carrier").value==""){
-			Swal.fire({
-			  icon: 'error',
-			  title: 'Oops...',
-			  text: 'Please enter carrier!',
-			});
-			return false;
-		}
-		return true;
-	}
-</script>
+	</script>
 
 }
